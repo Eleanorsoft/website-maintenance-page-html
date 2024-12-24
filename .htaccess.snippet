@@ -1,0 +1,7 @@
+RewriteCond %{REMOTE_ADDR} !^127\.0\.0\.1
+RewriteCond %{REMOTE_ADDR} !^172\.30\.0\.1$
+RewriteCond %{DOCUMENT_ROOT}/maintenance.html -f
+RewriteCond %{SCRIPT_FILENAME} !maintenance.html
+RewriteCond %{REQUEST_URI} !\.(jpe?g?|png|gif|css|js|ico)
+RewriteRule ^.*$ /maintenance.html [R=503,L]
+ErrorDocument 503 /maintenance.html
